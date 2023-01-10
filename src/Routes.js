@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import Home from './Home'
 import Companies from './Companies';
 import Jobs from './Jobs';
+import User from './User';
 
 function Routes() {
 
@@ -19,6 +20,9 @@ function Routes() {
             </Route>
             <Route exact path="/jobs">
                <Jobs />
+            </Route>
+            <Route exact path="/user">
+               <User />
             </Route>
          </div>
 
