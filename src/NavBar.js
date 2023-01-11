@@ -20,7 +20,7 @@ function NavBar() {
             </Nav>
             <Nav className="ml-auto" navbar>
                <NavItem>
-                  <NavLink to="/user">User</NavLink>
+                  <NavLink to="/profile">Profile</NavLink>
                </NavItem>
                {/* <NavItem>
                   <NavLink to="/logout">Logout</NavLink>

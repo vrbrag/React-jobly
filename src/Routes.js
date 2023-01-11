@@ -2,9 +2,11 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import NavBar from './NavBar';
 import Home from './Home'
-import Companies from './Companies';
-import Jobs from './Jobs';
-import User from './User';
+import List from './List';
+import CompanyDetails from './CompanyDetails';
+import Profile from './Profile'
+import Login from './Login'
+import Signup from './Signup'
 
 function Routes() {
 
@@ -16,13 +18,22 @@ function Routes() {
                <Home />
             </Route>
             <Route exact path="/companies">
-               <Companies />
+               <List type="companies" />
             </Route>
             <Route exact path="/jobs">
-               <Jobs />
+               <List type="jobs" />
             </Route>
-            <Route exact path="/user">
-               <User />
+            <Route exact path="/companies/:handle">
+               <CompanyDetails />
+            </Route>
+            <Route exact path="/profile">
+               <Profile />
+            </Route>
+            <Route exact path="/login">
+               <Login />
+            </Route>
+            <Route exact path="/signup">
+               <Signup />
             </Route>
          </div>
 
