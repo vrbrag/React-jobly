@@ -18,13 +18,14 @@ function CompanyList() {
 
    return (
       <div className="col-md-8 offset-md-2">
-         List of companies
+         <h1 className="list-title">Companies</h1>
          <div className="CompanyList-list">
             {companies.map(c => (
                <CompanyCard
                   key={c.handle}
                   handle={c.handle}
                   name={c.name}
+                  num_employees={c.num_employees}
                   description={c.description}
                   logoUrl={c.logoUrl}
                />

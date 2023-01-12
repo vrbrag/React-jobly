@@ -8,8 +8,9 @@ function JobList() {
    const [jobs, setJobs] = useState([])
    async function getItems() {
 
-      const c = await JoblyApi.getAllJobs()
-      setJobs(c)
+      const j = await JoblyApi.getAllJobs()
+      console.log(j)
+      setJobs(j)
 
    }
    useEffect(() => {
@@ -18,13 +19,15 @@ function JobList() {
 
    return (
       <div className="col-md-8 offset-md-2">
-         List of jobs
+         <h1 className="list-title">Jobs</h1>
          <div className="CompanyList-list">
             {jobs.map(j => (
                <JobCard
                   key={j.id}
                   title={j.title}
                   salary={j.equity}
+                  companyName={j.companyName}
+                  companyHandle={j.companyHandle}
                />
             ))}
          </div>
