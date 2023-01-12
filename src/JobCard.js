@@ -14,7 +14,7 @@ function JobCard(job) {
 
             <p><b>Salary:</b> {salary}</p>
 
-            <Button className="apply-btn">
+            <Button className="btn btn-lg btn-primary">
                Apply
             </Button>
          </Card>
