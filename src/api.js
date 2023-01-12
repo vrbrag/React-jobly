@@ -42,9 +42,9 @@ class JoblyApi {
     let res = await this.request(`companies/${handle}`);
     return res.company;
   }
-  /** Get all companies; filter: minEmployees, maxEmployees, name */
-  static async getAllCompanies(filter = {}) {
-    let res = await this.request(`companies`, filter);
+  /** Get all companies; filter: name */
+  static async getAllCompanies(name) {
+    let res = await this.request("companies", { name });
     return res.companies;
   }
 
@@ -55,8 +55,8 @@ class JoblyApi {
     return res.job;
   }
   /** Get all jobs; filter: minSalary, hasEquity, title */
-  static async getAllJobs(filter = {}) {
-    let res = await this.request(`jobs`, filter);
+  static async getAllJobs(title) {
+    let res = await this.request("jobs", { title });
     return res.jobs;
   }
 
@@ -73,17 +73,17 @@ class JoblyApi {
   }
   /** Login user and store token on class and return token */
   static async login(userData) {
-    let res = await this.request(`auth/authenticate`, userData, "post")
+    let res = await this.request(`auth/token`, userData, "post")
     return res.token
   }
   /** Save/update user information */
-  static async updateUser(username, data) {
+  static async updateProfile(username, data) {
     let res = await this.request(`users/${username}`, data, "patch")
     return res.user
   }
   /** Get all jobs; filter: minSalary, hasEquity, title */
-  static async apply(username, id) {
-    await this.request(`/users/${username}/jobs/${id}`, {}, "post")
+  static async applyToJob(username, id) {
+    await this.request(`users/${username}/jobs/${id}`, {}, "post")
   }
 }
 

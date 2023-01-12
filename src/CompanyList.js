@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import JoblyApi from './api'
-import CompanyCard from './CompanyCard'
-import Job from './Job'
-import { ListGroup, ListGroupItem } from 'reactstrap'
+import CompanyCard from './CompanyCard';
 
-function List({ type }) {
-   const [list, setList] = useState([])
+function CompanyList() {
+   console.debug("CompanyList");
+
+   const [companies, setCompanies] = useState([])
    async function getItems() {
-      // if (type === "jobs") {
-      //    const j = await JoblyApi.getAllJobs()
-      //    setList(j)
-      // } else {
+
       const c = await JoblyApi.getAllCompanies()
-      setList(c)
-      // }
+      setCompanies(c)
+
    }
    useEffect(() => {
       getItems();
@@ -21,9 +18,9 @@ function List({ type }) {
 
    return (
       <div className="col-md-8 offset-md-2">
-         List of {type}
+         List of companies
          <div className="CompanyList-list">
-            {list.map(c => (
+            {companies.map(c => (
                <CompanyCard
                   key={c.handle}
                   handle={c.handle}
@@ -37,4 +34,4 @@ function List({ type }) {
    )
 };
 
-export default List;
+export default CompanyList;
