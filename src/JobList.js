@@ -11,7 +11,6 @@ function JobList() {
       const j = await JoblyApi.getAllJobs()
       console.log(j)
       setJobs(j)
-
    }
    useEffect(() => {
       getItems();
@@ -21,11 +20,11 @@ function JobList() {
       <div className="col-md-8 offset-md-2">
          <h1 className="list-title">Jobs</h1>
          <div className="CompanyList-list">
-            {jobs.map(j => (
+            {jobs && jobs.map(j => (
                <JobCard
                   key={j.id}
                   title={j.title}
-                  salary={j.equity}
+                  salary={j.salary}
                   companyName={j.companyName}
                   companyHandle={j.companyHandle}
                />
