@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import NavBar from './NavBar';
 import Home from './Home'
 
 import CompanyDetails from './CompanyDetails';
@@ -10,11 +9,12 @@ import Signup from './Signup'
 import CompanyList from './CompanyList';
 import JobList from './JobList';
 
-function Routes() {
+function Routes({ login, signup }) {
+
 
    return (
       <div>
-         <NavBar />
+
          <div className="main">
             <Route exact path="/">
                <Home />
@@ -32,10 +32,10 @@ function Routes() {
                <Profile />
             </Route>
             <Route exact path="/login">
-               <Login />
+               <Login login={login} />
             </Route>
             <Route exact path="/signup">
-               <Signup />
+               <Signup signup={signup} />
             </Route>
          </div>
 
