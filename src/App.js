@@ -69,7 +69,7 @@ function App() {
     setCurrentUser(null)
     setToken(null)
   }
-  console.log(typeof signup)
+
   return (
     <div>
       <BrowserRouter>
