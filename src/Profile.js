@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import JoblyApi from './api';
-import UserContext from './UserContext';
+import UserContext from './auth/UserContext';
 import { Card, CardBody } from 'reactstrap'
 
 function Profile() {

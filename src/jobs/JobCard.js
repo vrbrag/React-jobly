@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardSubtitle, CardTitle, Button } from 'reactstrap'
 import CurrencyFormat from 'react-currency-format'
-import UserContext from './UserContext'
+import UserContext from '../auth/UserContext'
 
 function JobCard({ id, title, salary, equity, companyName, companyHandle }) {
 
@@ -10,7 +10,6 @@ function JobCard({ id, title, salary, equity, companyName, companyHandle }) {
    const [applied, setApplied] = useState()
 
    useEffect(function appliedStatus() {
-      console.debug("JobCard applied", "id=", id)
       setApplied(hasAppliedToJob(id))
    }, [id, hasAppliedToJob])
 

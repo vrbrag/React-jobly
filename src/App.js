@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import JoblyApi from './api';
 import NavBar from './NavBar';
-import UserContext from './UserContext'
+import UserContext from './auth/UserContext'
 import jwt from "jsonwebtoken";
 
 
@@ -73,7 +73,7 @@ function App() {
 
   // Check if job 'id' is in 'applicationIds' state 
   function hasAppliedToJob(id) {
-    console.debug("User applicationIds", applicationIds)
+    // console.debug("User applicationIds", applicationIds)
     return applicationIds.has(id)
   }
   // API call to apply to job

@@ -2,12 +2,12 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import Home from './Home'
 
-import CompanyDetails from './CompanyDetails';
+import CompanyDetails from './companies/CompanyDetails';
 import Profile from './Profile'
-import Login from './Login'
-import Signup from './Signup'
-import CompanyList from './CompanyList';
-import JobList from './JobList';
+import Login from './auth/Login'
+import Signup from './auth/Signup'
+import CompanyList from './companies/CompanyList';
+import JobList from './jobs/JobList';
 import PrivateRoute from './PrivateRoute';
 
 function Routes({ login, signup }) {
