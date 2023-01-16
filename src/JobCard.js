@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardSubtitle, CardTitle, Button } from 'reactstrap'
 import CurrencyFormat from 'react-currency-format'
+import UserContext from './UserContext'
 
-function JobCard(job) {
-   const { title, salary, equity, companyName, companyHandle } = job
+function JobCard({ id, title, salary, equity, companyName, companyHandle }) {
+
+   const { hasAppliedToJob, applyToJob } = useContext(UserContext)
+   const [applied, setApplied] = useState()
+
+   useEffect(function appliedStatus() {
+      console.debug("JobCard applied", "id=", id)
+      setApplied(hasAppliedToJob(id))
+   }, [id, hasAppliedToJob])
+
+   async function handleApply(e) {
+      if (hasAppliedToJob(id)) return
+      applyToJob(id)
+      setApplied(true)
+   }
+
    return (
       <div className="JobCard">
+         {applied}
          <Card className="card-body">
             <CardTitle className="card-title">{title}</CardTitle>
             <Link to={`/companies/${companyHandle}`}>
@@ -14,8 +30,8 @@ function JobCard(job) {
             </Link>
             {salary && <div><b>Salary: </b>{formatSalary(salary)}</div>}
             {equity && <div><b>Equity: </b>{equity}</div>}
-            <Button className="btn btn-lg btn-primary">
-               Apply
+            <Button className="btn btn-lg btn-primary" onClick={handleApply} disabled={applied}>
+               {applied ? "Applied" : "Apply"}
             </Button>
          </Card>
       </div>

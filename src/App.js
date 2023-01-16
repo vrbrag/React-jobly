@@ -13,12 +13,12 @@ import jwt from "jsonwebtoken";
 export const TOKEN_STORAGE_ID = "jobly-token";
 
 function App() {
+  const [applicationIds, setApplicationIds] = useState(new Set([]))
   const [currentUser, setCurrentUser] = useState(null)
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID)
-  // const [infoLoaded, setInfoLoaded] = useState(false);
+
   console.debug(
     "App",
-    // "infoLoaded=", infoLoaded,
     "currentUser=", currentUser,
     "token=", token,
   );
@@ -32,11 +32,12 @@ function App() {
           let { username } = jwt.decode(token)
 
           JoblyApi.token = token;
-          let currentUser = await JoblyApi.getCurrentUser(username)
-          setCurrentUser(currentUser)
+          let currentUser = await JoblyApi.getCurrentUser(username);
+          setCurrentUser(currentUser);
+          setApplicationIds(new Set(currentUser.applications));
         } catch (e) {
-          console.error("App getUserInfo error loading", e)
-          setCurrentUser(null)
+          console.error("App getUserInfo error loading", e);
+          setCurrentUser(null);
         }
       }
 
@@ -70,10 +71,22 @@ function App() {
     setToken(null)
   }
 
+  // Check if job 'id' is in 'applicationIds' state 
+  function hasAppliedToJob(id) {
+    console.debug("User applicationIds", applicationIds)
+    return applicationIds.has(id)
+  }
+  // API call to apply to job
+  function applyToJob(id) {
+    if (hasAppliedToJob(id)) return;
+    JoblyApi.applyToJob(currentUser.username, id);
+    setApplicationIds(new Set([...applicationIds, id]));
+  }
+
   return (
     <div>
       <BrowserRouter>
-        <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}>
           <div className="App">
             <NavBar logout={logout} />
             <Routes login={login} signup={signup} />
