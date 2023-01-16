@@ -3,6 +3,7 @@ import JoblyApi from './api';
 import UserContext from './auth/UserContext';
 import { Card, CardBody } from 'reactstrap'
 import Alert from './Alert'
+import './Profile.css'
 
 function Profile() {
    const { currentUser, setCurrentUser } = useContext(UserContext)
@@ -58,8 +59,8 @@ function Profile() {
    }
 
    return (
-      <div className="col-md-6 col-lg-4 offset-md-3 offset-lg-4" >
-         <h3>Profile</h3>
+      <div className="Profile col-md-6 col-lg-4 offset-md-3 offset-lg-4" >
+         <h3 className="list-title">Profile</h3>
 
          <Card className="card">
             <CardBody className="card-body">
@@ -116,7 +117,7 @@ function Profile() {
                      <Alert type="success" messages={["Updated successfully."]} />
                      : null}
 
-                  <button onClick={handleSubmit} type="submit">Save Changes</button>
+                  <button className="btn btn-success font-weight-bold mr-3" onClick={handleSubmit} type="submit">Save Changes</button>
                </form>
             </CardBody>
          </Card>

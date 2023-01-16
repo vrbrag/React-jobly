@@ -23,11 +23,9 @@ function SearchForm({ search }) {
                placeholder="Search company name..."
                value={searchTerm}
                onChange={handleChange}
-
             />
-            {/* <div className="searchIcon"><SearchIcon /></div> */}
-            <button type="submit" className="btn btn-lg btn-primary">
-               Go
+            <button className="btn btn-success font-weight-bold mr-3" type="submit" >
+               Search
             </button>
          </form>
       </div>

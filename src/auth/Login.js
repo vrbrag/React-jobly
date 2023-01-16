@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Alert from '../Alert'
+import './Login.css'
 
 function Login({ login }) {
    const [formData, setFormData] = useState({
@@ -63,7 +64,7 @@ function Login({ login }) {
                         ? <Alert type="danger" messages={formErrors} />
                         : null}
 
-                     <button type="submit">Login</button>
+                     <button className="btn btn-success font-weight-bold mr-3" type="submit">Login</button>
                   </form>
                </div>
             </div>

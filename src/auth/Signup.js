@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Alert from '../Alert'
+import './Signup.css'
 
 function Signup({ signup }) {
    const [formData, setFormData] = useState({
@@ -112,7 +113,7 @@ function Signup({ signup }) {
                         ? <Alert type="danger" messages={formErrors} />
                         : null
                      }
-                     <button type="submit">Signup</button>
+                     <button className="btn btn-success font-weight-bold mr-3" type="submit">Signup</button>
                   </form>
                </div>
             </div>

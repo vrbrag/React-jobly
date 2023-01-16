@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, CardSubtitle, CardTitle, Button } from 'reactstrap'
+import { Card, CardSubtitle, CardTitle } from 'reactstrap'
 import CurrencyFormat from 'react-currency-format'
 import UserContext from '../auth/UserContext'
+import './JobCard.css'
 
 function JobCard({ id, title, salary, equity, companyName, companyHandle }) {
 
@@ -29,9 +30,9 @@ function JobCard({ id, title, salary, equity, companyName, companyHandle }) {
             </Link>
             {salary && <div><b>Salary: </b>{formatSalary(salary)}</div>}
             {equity && <div><b>Equity: </b>{equity}</div>}
-            <Button className="btn btn-lg btn-primary" onClick={handleApply} disabled={applied}>
+            <button className="btn btn-success font-weight-bold mr-3" onClick={handleApply} disabled={applied}>
                {applied ? "Applied" : "Apply"}
-            </Button>
+            </button>
          </Card>
       </div>
    )

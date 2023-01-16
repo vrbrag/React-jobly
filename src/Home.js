@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import UserContext from './auth/UserContext';
 import { Link } from 'react-router-dom'
+import './Home.css'
 
 function Home() {
    const { currentUser } = useContext(UserContext)
@@ -8,7 +9,7 @@ function Home() {
    console.debug("Homepage", "currentUser=", currentUser)
 
    return (
-      <div>
+      <div className="Home">
          <div>
             <h1>Jobly</h1>
             <p>Let your job search begin here!</p>
@@ -16,9 +17,9 @@ function Home() {
                <h2>Welcome Back, {currentUser.firstName || currentUser.username}! </h2>
                : (
                   <p>
-                     <Link className="btn btn-primary font-weight-bold mr-3" to="/login">Log in
+                     <Link className="btn btn-success font-weight-bold mr-3" to="/login">Log in
                      </Link>
-                     <Link className="btn btn-primary font-weight-bold mr-3" to="/signup">Sign up
+                     <Link className="btn btn-success font-weight-bold mr-3" to="/signup">Sign up
                      </Link>
                   </p>
                )
