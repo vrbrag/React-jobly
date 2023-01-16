@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { NavLink } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 import UserContext from '../auth/UserContext';
+import './NavBar.css'
 
 function NavBar({ logout }) {
    const { currentUser } = useContext(UserContext)
@@ -9,26 +10,25 @@ function NavBar({ logout }) {
 
    function loggedInNav() {
       return (
-         <div className="navbar-nav ml-auto">
-            <Navbar expand="md">
-               <NavLink exact to="/" className="navbar-brand">
+         <div >
+            <Navbar className="nav-brand" color="success" expand="md">
+               <NavLink exact to="/" className="navbar-brand mr-2">
                   Jobly
                </NavLink>
 
-               <Nav className="mr-auto" navbar>
-                  <NavItem>
-                     <NavLink to="/jobs">Jobs</NavLink>
+               <Nav className="ms-auto" navbar>
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
                   </NavItem>
-                  <NavItem>
-                     <NavLink to="/companies">Companies</NavLink>
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/companies">Companies</NavLink>
                   </NavItem>
-               </Nav>
-               <Nav className="ml-auto" navbar>
-                  <NavItem>
-                     <NavLink to="/profile">Profile</NavLink>
+
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/profile">Profile</NavLink>
                   </NavItem>
-                  <NavItem>
-                     <NavLink to="/" onClick={logout}>Logout {currentUser.first_name || currentUser.username} </NavLink>
+                  <NavItem className="navbar-item">
+                     <NavLink id="nav-logout" className="nav-link" to="/" onClick={logout}>Logout {currentUser.first_name || currentUser.username} </NavLink>
                   </NavItem>
                </Nav>
             </Navbar>
@@ -38,18 +38,18 @@ function NavBar({ logout }) {
 
    function loggedOutNav() {
       return (
-         <div className="navbar-nav ml-auto">
-            <Navbar expand="md">
-               <NavLink exact to="/" className="navbar-brand">
+         <div>
+            <Navbar className="nav-brand" color="success" expand="md">
+               <NavLink exact to="/" className="navbar-brand mr-2">
                   Jobly
                </NavLink>
 
-               <Nav className="mr-auto" navbar>
-                  <NavItem>
-                     <NavLink to="/login">Login</NavLink>
+               <Nav className="ms-auto" navbar>
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/login">Login</NavLink>
                   </NavItem>
-                  <NavItem>
-                     <NavLink to="/signup">Signup</NavLink>
+                  <NavItem className="navbar-item">
+                     <NavLink className="nav-link" to="/signup">Signup</NavLink>
                   </NavItem>
                </Nav>
             </Navbar>
