@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Alert from '../Alert'
 
 function Signup({ signup }) {
    const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ function Signup({ signup }) {
       lastName: "",
       email: ""
    })
+   const [formErrors, setFormErrors] = useState([]);
 
    const history = useHistory()
 
@@ -23,6 +25,8 @@ function Signup({ signup }) {
       let result = await signup(formData);
       if (result.success) {
          history.push("/companies");
+      } else {
+         setFormErrors(result.errors)
       }
 
    }
@@ -104,7 +108,10 @@ function Signup({ signup }) {
                         />
                      </div>
 
-
+                     {formErrors.length
+                        ? <Alert type="danger" messages={formErrors} />
+                        : null
+                     }
                      <button type="submit">Signup</button>
                   </form>
                </div>

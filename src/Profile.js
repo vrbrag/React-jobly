@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import JoblyApi from './api';
 import UserContext from './auth/UserContext';
 import { Card, CardBody } from 'reactstrap'
+import Alert from './Alert'
 
 function Profile() {
    const { currentUser, setCurrentUser } = useContext(UserContext)
@@ -106,6 +107,14 @@ function Profile() {
                         onChange={handleChange}
                      />
                   </div>
+                  {formErrors.length
+                     ? <Alert type="danger" messages={formErrors} />
+                     : null}
+
+                  {saveSuccess
+                     ?
+                     <Alert type="success" messages={["Updated successfully."]} />
+                     : null}
 
                   <button onClick={handleSubmit} type="submit">Save Changes</button>
                </form>

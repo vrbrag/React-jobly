@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Alert from '../Alert'
 
 function Login({ login }) {
    const [formData, setFormData] = useState({
       username: "",
       password: ""
    })
+   const [formErrors, setFormErrors] = useState([]);
    const history = useHistory()
 
    async function handleSubmit(e) {
@@ -13,6 +15,8 @@ function Login({ login }) {
       let result = await login(formData)
       if (result.success) {
          history.push("/companies")
+      } else {
+         setFormErrors(result.errors)
       }
    }
 
@@ -55,6 +59,9 @@ function Login({ login }) {
                         />
                      </div>
 
+                     {formErrors.length
+                        ? <Alert type="danger" messages={formErrors} />
+                        : null}
 
                      <button type="submit">Login</button>
                   </form>
